@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 
 public class Form {
-
 	private JFrame frame;
 
 	/**
@@ -39,20 +38,22 @@ public class Form {
 		frame = new JFrame();
 		frame.setBounds(50, 10, 1280, 720);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		PaintPanel panel = new PaintPanel();
 		Game value = new Game();
 		MenuController.menu.setIsActive(true);
-		
+
 		InputHandler handler = new InputHandler();
+		ControlInputHandler controlHandler = new ControlInputHandler();
 		panel.addMouseListener(handler);
 		panel.addMouseMotionListener(handler);
-		
+		panel.addMouseListener(controlHandler);
+		panel.addMouseMotionListener(controlHandler);
+
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		
+
 		//panel.addDrawable(new PlayerToken());
 		panel.addDrawable(MenuController.menu);
 		panel.addDrawable(value);
 	}
-
 }
